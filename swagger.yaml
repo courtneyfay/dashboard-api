@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: World Health Organization API
+  description: Serves up healthcare data from the WHO dataset
+  version: 0.1.9
+
+servers:
+  - url: http://localhost:3000
+    description: Optional server description
+
+paths:
+  /health:
+    get:
+      operationId: getAllHealth
+      summary: Returns health data from WHO dataset
+      #parameters:
+      #- name: userId
+      #in: path
+      #required: true
+      #description: a user id
+      #schema:
+      #type: integer
+      #format: int64
+      #minimum: 1
+      responses:
+        "200": #status code
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+        "400":
+          description: The specified user id is invalid (not a number)
+        "404":
+          description: A user with the specified id was not found
+        default:
+          description: Unexpected error
+
+components:
+  schemas:
+    Health:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        healths:
+          type: array
+          items:
+            type: string
+      #Both properties are required
+      required:
+        - id
+        - name

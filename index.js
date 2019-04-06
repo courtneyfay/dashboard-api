@@ -1,10 +1,10 @@
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-const port = 3000;
 const routes = require("./routes.js");
+const port = 3000;
 
-const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());

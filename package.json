@@ -12,6 +12,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "method-override": "^3.0.0"
+    "method-override": "^3.0.0",
+    "swagger-ui-express": "^4.0.2",
+    "yamljs": "^0.3.0"
   }
 }
