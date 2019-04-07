@@ -1,5 +1,7 @@
+const { auth } = require("google-auth-library");
+require("dotenv").config();
 const { BigQuery } = require("@google-cloud/bigquery");
-const bigqueryClient = new BigQuery();
+const bigQueryClient = new BigQuery();
 const regionalMap = require("./helpers/regionalMap");
 const {
   AIR_POLLUTION,
@@ -59,10 +61,32 @@ const _mapData = rows => {
   return finalData;
 };
 
-const mortalityData = async region => {
+const _authenticate = async () => {
+  const keysEnvVar = process.env["GOOGLE_CREDENTIALS"];
+  if (!keysEnvVar) {
+    throw new Error("The $CREDS environment variable was not found!");
+  }
+  const keys = JSON.parse(keysEnvVar);
+
   try {
-    const countries = regionalMap[region];
-    const sqlQuery = `SELECT 
+    const client = auth.fromJSON(keys);
+    client.scopes = ["https://www.googleapis.com/auth/bigquery"];
+
+    //adding some additional info for authentication
+    bigQueryClient.authClient.cachedCredentials = client.credentials;
+    bigQueryClient.authClient.jsonContent = keys;
+    bigQueryClient.projectId = keys.project_id;
+
+    return client;
+  } catch (err) {
+    throw err;
+  }
+};
+
+const getMortalityData = async region => {
+  await _authenticate();
+  const countries = regionalMap[region];
+  const sqlQuery = `SELECT 
         *
     FROM \`bigquery-public-data.world_bank_health_population.health_nutrition_population\`
     WHERE indicator_code in 
@@ -76,12 +100,13 @@ const mortalityData = async region => {
     and year = 2016
     order by country_code;`;
 
-    const options = {
-      query: sqlQuery,
-      location: "US"
-    };
+  const options = {
+    query: sqlQuery,
+    location: "US"
+  };
 
-    const [rows] = await bigqueryClient.query(options);
+  try {
+    const [rows] = await bigQueryClient.query(options);
 
     return _mapData(rows);
   } catch (err) {
@@ -89,4 +114,4 @@ const mortalityData = async region => {
   }
 };
 
-module.exports = mortalityData;
+module.exports = getMortalityData;
