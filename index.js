@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const routes = require("./routes.js");
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
