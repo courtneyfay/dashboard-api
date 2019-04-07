@@ -5,8 +5,9 @@ info:
   version: 0.1.9
 
 servers:
-  - url: http://localhost:3000
-    description: Local url
+  #uncomment for local dev
+  #- url: http://localhost:3000
+  #description: Local url
   - url: https://boiling-fjord-16588.herokuapp.com/
     description: Remote url
 
