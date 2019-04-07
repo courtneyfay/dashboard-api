@@ -8,9 +8,9 @@ const swaggerDoc = yaml.load("./swagger.yaml");
 router.use("/", swaggerUi.serve);
 router.get("/", swaggerUi.setup(swaggerDoc));
 
-router.get("/health", async (req, res) => {
-  const health = await controller.getAllHealth(req, res);
-  console.log("health", health);
+router.get("/health/mortality/:region", async (req, res) => {
+  const health = await controller.getAllMortalityData(req, res);
+
   res.send(health);
 });
 

@@ -9,26 +9,23 @@ servers:
     description: Optional server description
 
 paths:
-  /health:
+  /health/mortality/{region}:
     get:
-      operationId: getAllHealth
-      summary: Returns health data from WHO dataset
-      #parameters:
-      #- name: userId
-      #in: path
-      #required: true
-      #description: a user id
-      #schema:
-      #type: integer
-      #format: int64
-      #minimum: 1
+      operationId: getAllMortalityData
+      summary: Returns mortality health data by region
+      parameters:
+        - in: path
+          name: Region of the world
+          required: true
+          schema:
+            $ref: "#/components/parameters/region"
       responses:
         "200": #status code
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Health"
+                $ref: "#/components/schemas/Mortality"
         "400":
           description: The specified user id is invalid (not a number)
         "404":
@@ -38,17 +35,19 @@ paths:
 
 components:
   schemas:
-    Health:
+    Mortality:
       properties:
-        id:
-          type: integer
-        name:
-          type: string
-        healths:
+        data:
           type: array
           items:
             type: string
-      #Both properties are required
-      required:
-        - id
-        - name
+  parameters:
+    region:
+      type: string
+      enum:
+        - TEA #east asia & pacific
+        - TEC #europe & central asia
+        - TLA #latin america & caribbean
+        - TMN #middle east & north africa
+        - TSA #south asia
+        - TSS #sub-saharan africa
