@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dashboard-236002",
+  "private_key_id": "69e1696e69509a2fda9d8523eaaa5cefe5ded64f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSRLwjXvWeDEq4\ne0aJkxcYE14xY2Z5neEV+Jg0A+AfY+C38uIoeSpJvNa9SsM+dysAhUShaG9Sc8Tu\nzPj04pUCLTWi2t3rhXwDXAO6MFvB6rpM0twSOLRajqRBy5T0EE4Ru/zGL6G5fqvN\nUPk5BrES+DluIRNcmOXotEI8jYxtBQkYCvC9tetkmTDvzHoyeJ2mj885OttKjxI2\ny//XoUgU+33ANMZ4rHVAp7kgcviWs7drQEqnyXX/xDKv3ixmiQEaFBGSLHcFL7no\nFuXLA9J6YdaDmCNjkLB3c8e1zegyJP4SbINRkQ+/GWJlZoWuZoN0QuLL4fDxVgOc\nyIFzxSqHAgMBAAECggEAVDUeu3OeHeuCSRtlhlcX2pZ3FIRgV7g4mlnyanJa4XdY\nWZK1q8vKeblcrnYwduW2nQDCGXn/ix+98Hy5/yh20GZWop/QXDAbGCVTgM85EBH3\nBikz5UA8Sj/x3D+xqYSWH1gPxTbyJ51pJFKXXJUneRdbuJUacezxth3qoOF3KXku\n81lQnKfI9En5jB/QpfoP8I/4qjHTRbdbw1BXIwHpqDm99U1xDJY7z5BeDrCn2KuU\nM/5OA5Y9weoneDkNdI3QTYuWaN8sUYRW3kAB/g2ihXGX/bTITgKtUGecU1xYj4Fc\nq+pQksAX10XFC96TB9zqgDQ1OJivPrQLzd+zxbIpAQKBgQDpZJ0CEqtt104w65bv\nwUCZVhXDlFq9HPxesBdUGWoKnQByGXhgSo602ahgwaWfwbg3V5mwYBmmiaAuuFl5\nz4wSoT/oBSxPFGv+loKxZW/iNriXk186elQJEhAuHnhosBfzMaShbzD6Mm4dDeQP\nT9hPG8ZCYGi++qUb+CZ+pGUIxwKBgQDmorVts+nCoMqpB84GdHg8tINlsKxAhB9q\nZ5cDxK6e94wuZ2Zx03OF8It0FJt14rO0DK571FrDWH1i7UWN4UzTrLNtw81JqaIJ\nwOapWFX09IRhujyiu+kv15QM0Fk5jgKLrNdx3EhMaVMmvNsiwUPgX5mo5diq5ebb\nuYLNU2KQQQKBgQCbXqtW8e7FVIts7aixOskySqh6ZoxxUJaAwmEFT1XUcugVDPeh\nwoB1zF/W6ZLEY0WrMdnSHGd3Ai9sarTF7nClBktwveDdVA8AkFm4lnqA8US5QxYl\n68F9uFSlHwuxRWjsMKQUA91q8Z90IAcuWkz5fNfi4CNa36iCkhOuQuoviQKBgAi9\n2gqSayXJWmUVuqVb/MKwRNqx25WGbHpn+r1V0xiLYXDQ0n01+ob1GxQHQ+0v7ofA\ng0yGO/pzfC0nuR8rjvHm9dYPOdS07UNZYGTCyF9EdVAO8wVoAeqiTSY/L2KTE12f\n63qRUtwykchCGDw0/xGeDgDs1U2E8T8axO5rXq0BAoGAaKEILWdbSx2jSaX+ft/F\nYsJ1JRYUzWs6H45WzyfoU5EuHqjUrmR+HsnfczzOfg1fCrNvS5iEsBQYMqwnZ0Vv\nWHd0mtULgzbr6VxD+apI5fJKz/oeDTlwyt3FgvXlo+iExTqsIIAnsvFngAr71tFW\n9nAesCoFYU/daJ2todUSMmY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "world-heath-dashboard@dashboard-236002.iam.gserviceaccount.com",
+  "client_id": "103189605502590711089",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/world-heath-dashboard%40dashboard-236002.iam.gserviceaccount.com"
+}
