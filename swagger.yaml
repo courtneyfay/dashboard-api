@@ -6,7 +6,9 @@ info:
 
 servers:
   - url: http://localhost:3000
-    description: Optional server description
+    description: Local url
+  - url: https://boiling-fjord-16588.herokuapp.com/
+    description: Remote url
 
 paths:
   /health/mortality/{region}:
