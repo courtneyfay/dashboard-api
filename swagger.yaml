@@ -5,11 +5,10 @@ info:
   version: 0.1.9
 
 servers:
-  #uncomment for local dev
   #- url: http://localhost:3000
-  #description: Local url
+  #  description: Uncomment for local API dev
   - url: https://boiling-fjord-16588.herokuapp.com/
-    description: Remote url
+    description: Remote production url
 
 paths:
   /health/mortality/{region}:
