@@ -15,9 +15,15 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200
 };
+const swaggerUi = require("swagger-ui-express");
+const yaml = require("yamljs");
+const swaggerDoc = yaml.load("./swagger.yaml");
 
 // Add CORS middleware headers
 app.use(cors(corsOptions));
+
+// Add Swagger docs route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Add all routes
 app.use("/", routes);
