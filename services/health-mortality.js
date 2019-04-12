@@ -1,8 +1,4 @@
-const { auth } = require("google-auth-library");
-require("dotenv").config();
-const { BigQuery } = require("@google-cloud/bigquery");
-const bigQueryClient = new BigQuery();
-const regionalMap = require("./helpers/regionalMap");
+const regionalMap = require("../helpers/regionalMap");
 const {
   AIR_POLLUTION,
   DISEASE,
@@ -10,7 +6,10 @@ const {
   LIFE_EXPECTANCY,
   POISONING,
   SUICIDE
-} = require("./helpers/indicatorMap");
+} = require("../helpers/indicatorMap");
+const { BigQuery } = require("@google-cloud/bigquery");
+const bigQueryClient = new BigQuery();
+const authenticateBigQuery = require("./authenticate");
 
 const _mapData = rows => {
   let finalData = {};
@@ -61,52 +60,34 @@ const _mapData = rows => {
   return finalData;
 };
 
-const _authenticate = async () => {
-  const keysEnvVar = process.env["GOOGLE_CREDENTIALS"];
-  if (!keysEnvVar) {
-    throw new Error("The $CREDS environment variable was not found!");
-  }
-  const keys = JSON.parse(keysEnvVar);
-
-  try {
-    const client = auth.fromJSON(keys);
-    client.scopes = ["https://www.googleapis.com/auth/bigquery"];
-
-    //adding some additional info for authentication
-    bigQueryClient.authClient.cachedCredentials = client.credentials;
-    bigQueryClient.authClient.jsonContent = keys;
-    bigQueryClient.projectId = keys.project_id;
-
-    return client;
-  } catch (err) {
-    throw err;
-  }
-};
-
-const getMortalityData = async region => {
-  await _authenticate();
+const _buildSqlQuery = region => {
   const countries = regionalMap[region];
   const sqlQuery = `SELECT 
-        *
+      *
     FROM \`bigquery-public-data.world_bank_health_population.health_nutrition_population\`
     WHERE indicator_code in 
       ('${AIR_POLLUTION}',
-         '${DISEASE}',
-         '${HYGIENE}',
-         '${LIFE_EXPECTANCY}',
-         '${POISONING}',
-         '${SUICIDE}')
+          '${DISEASE}',
+          '${HYGIENE}',
+          '${LIFE_EXPECTANCY}',
+          '${POISONING}',
+          '${SUICIDE}')
     and country_code in (${countries})
     and year = 2016
     order by country_code;`;
 
-  const options = {
+  return {
     query: sqlQuery,
     location: "US"
   };
+};
+
+const getMortalityData = async region => {
+  await authenticateBigQuery(bigQueryClient);
+  const sqlQuery = _buildSqlQuery(region);
 
   try {
-    const [rows] = await bigQueryClient.query(options);
+    const [rows] = await bigQueryClient.query(sqlQuery);
 
     return _mapData(rows);
   } catch (err) {

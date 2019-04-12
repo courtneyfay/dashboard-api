@@ -1,4 +1,4 @@
-const getMortalityData = require("./services.js");
+const getMortalityData = require("./services/health-mortality");
 
 const getAllMortalityData = async (req, res) => {
   //TODO: remove this default region value that appeases Swagger
