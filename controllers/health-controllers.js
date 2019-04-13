@@ -1,6 +1,6 @@
 const getMortalityData = require("../services/health-mortality");
 
-const getAllMortalityData = async (req, res) => {
+const getRegionalMortalityData = async (req, res) => {
   //TODO: remove this default region value that appeases Swagger
   let region = req.params.region;
   if (region === "{region}") {
@@ -12,5 +12,5 @@ const getAllMortalityData = async (req, res) => {
 };
 
 module.exports = {
-  getAllMortalityData
+  getRegionalMortalityData
 };

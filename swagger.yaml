@@ -5,15 +5,15 @@ info:
   version: 0.1.9
 
 servers:
-  - url: http://localhost:3000
-    description: Uncomment for local API dev
-  #- url: https://boiling-fjord-16588.herokuapp.com/
-  #  description: Remote production url
+  #- url: http://localhost:3000
+  #  description: Uncomment for local API dev
+  - url: https://boiling-fjord-16588.herokuapp.com/
+    description: Remote production url
 
 paths:
   /health/mortality/{region}:
     get:
-      operationId: getAllMortalityData
+      operationId: getRegionalMortalityData
       summary: Returns mortality health data by region
       parameters:
         - in: path
@@ -38,11 +38,55 @@ paths:
 components:
   schemas:
     Mortality:
+      type: object
       properties:
-        data:
-          type: array
-          items:
-            type: string
+        country_code:
+          type: string
+          example: AUS
+        items:
+          $ref: "#/components/schemas/CountryData"
+    CountryData:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Albania
+          description: The name of the country
+        disease:
+          type: integer
+          example: 17
+          description: The percentage of deaths in a country from CVD, cancer, diabetes or CRD
+        poisoning:
+          type: integer
+          example: 0.4
+          description: The number of deaths per 100,000 in a country due to poisoning
+        hygiene:
+          type: integer
+          example: 0.2
+          description: The number of deaths per 100,000 in a country due to unsafe water, sanitation, and lack of hygiene
+        lifeExpectancy:
+          type: integer
+          example: 78.345
+          description: The number of years a person can be expected to live for a country
+        suicide:
+          type: integer
+          example: 6.3
+          description: The number of deaths per 100,000 in a country due to suicide
+        airPollution:
+          type: integer
+          example: 68
+          description: The number of deaths per 100,000 in a country due to air pollution
+        lineChart:
+          type: object
+          properties:
+            year:
+              type: string
+              example: "1960-01-01"
+              description: The year of a given life expectancy data point
+            value:
+              type: integer
+              example: 62.279
+              description: The number of years of life expectancy for a given year
   parameters:
     region:
       type: string
