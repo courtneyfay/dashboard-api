@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const routes = require("./routes.js");
+const routes = require("./routes/health-routes");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
 const whitelist = ["http://localhost:8080"];

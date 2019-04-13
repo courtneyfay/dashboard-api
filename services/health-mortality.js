@@ -1,4 +1,4 @@
-const regionalMap = require("../helpers/regionalMap");
+const regionalMap = require("../datamaps/regional-map");
 const {
   AIR_POLLUTION,
   DISEASE,
@@ -6,7 +6,7 @@ const {
   LIFE_EXPECTANCY,
   POISONING,
   SUICIDE
-} = require("../helpers/indicatorMap");
+} = require("../datamaps/indicator-map");
 const { BigQuery } = require("@google-cloud/bigquery");
 const bigQueryClient = new BigQuery();
 const authenticateBigQuery = require("./authenticate");
