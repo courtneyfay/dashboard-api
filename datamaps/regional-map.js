@@ -10,7 +10,7 @@ const regionalMap = {
     "'ABW','ARG','ATG','BHS','BLZ','BOL','BRA','BRB','CHL','COL','CRI','CUB','CUW','CYM','DMA','DOM','ECU','GRD','GTM','GUY','HND','HTI','JAM','KNA','LCA','MAF','MEX','NIC','PAN','PER','PRI','PRY','SLV','SUR','SXM','TCA','TTO','URY','VCT','VEN','VGB','VIR'",
   //middle east & north africa
   TMN:
-    "'ARE','BHR','DJI','DZA','EGY','IRN','IRQ','ISR','JOR','KWT','LBN','LBY','MAR','MLT','OMN','PSE','QAT','SAU','SYR','TUN','YEM',",
+    "'ARE','BHR','DJI','DZA','EGY','IRN','IRQ','ISR','JOR','KWT','LBN','LBY','MAR','MLT','OMN','PSE','QAT','SAU','SYR','TUN','YEM'",
   //south asia
   TSA: "'AFG','BGD','BTN','IND','LKA','MDV','NPL','PAK'",
   //sub-saharan africa
