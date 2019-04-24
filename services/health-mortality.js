@@ -1,4 +1,4 @@
-const regionalMap = require("../datamaps/regional-map");
+const countriesMap = require("../datamaps/countries-map");
 const {
   AIR_POLLUTION,
   DISEASE,
@@ -133,7 +133,7 @@ const getMortalityData = async region => {
   await authenticateBigQuery(bigQueryClient);
 
   //build up both SQL queries for selected countries
-  const countries = regionalMap[region];
+  const countries = countriesMap.regionalMap[region];
   const mortalitySQL = _buildMortalityQuery(countries);
   const lifeExpectancySQL = _buildLifeExpectancyQuery(countries);
 

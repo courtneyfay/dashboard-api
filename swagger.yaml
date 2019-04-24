@@ -33,6 +33,25 @@ paths:
         default:
           description: Unexpected error
 
+paths:
+  /health/nutrition:
+    get:
+      operationId: getObesityDataByGender
+      summary: Returns obesity health data sorted by male/female and highest/lowest
+      responses:
+        "200": #status code
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Nutrition"
+        "400":
+          description: The specified user id is invalid (not a number)
+        "404":
+          description: A user with the specified id was not found
+        default:
+          description: Unexpected error
+
 components:
   schemas:
     Mortality:
@@ -85,6 +104,40 @@ components:
               type: integer
               example: 62.279
               description: The number of years of life expectancy for a given year
+      Nutrition:
+      type: object
+      properties:
+        highestMale:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObesityData"
+        highestFemale:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObesityData"
+        lowestMale:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObesityData"
+        lowestFemale:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObesityData"
+      ObesityData:
+        type: object
+        properties:
+          key: 
+            type: string
+            example: NRU
+            description: The WHO identifiable code for the country
+          name:
+            type: string
+            example: Nauru
+            description: The name of the country
+          percentage:
+            type: integer
+            example: 88.3
+            description: The percentage of the population of that country that is overweight (either male or female)      
   parameters:
     region:
       type: string
